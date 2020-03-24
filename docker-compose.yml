@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+    api:
+        build:
+            dockerfile: Dockerfile
+            context: ./containers/api
+        volumes:
+            - ./containers/api/src:/go/api
+        tty: true
+        network_mode: "host"
+    mqtt:
+        build:
+            dockerfile: Dockerfile
+            context: ./containers/mqtt
+        ports: 
+            - "1883:1883"
+        volumes:
+            - mosquittodata:/mosquitto/data
+            - mosquittolog:/mosquitto/log
+        tty: true
+        network_mode: "host"
+
+volumes:
+    mosquittodata:
+        driver: "local"
+    mosquittolog:
+        driver: "local"
