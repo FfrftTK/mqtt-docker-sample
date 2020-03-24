@@ -19,5 +19,6 @@ Remote-containers: Open folder in Container (open containers/api)
 
 ## start MQTT Massage Send
 ```
+go mod tidy
 go run main.go
 ```
